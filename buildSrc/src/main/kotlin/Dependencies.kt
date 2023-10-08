@@ -49,6 +49,9 @@ object Dependencies {
     const val composeDestinationKsp =
         "io.github.raamcosta.compose-destinations:ksp:${Versions.composeDestination}"
 
+    const val coilCore = "io.coil-kt:coil:${Versions.coil}"
+    const val coilCompose = "io.coil-kt:coil-compose:${Versions.coil}"
+
 
 }
 
@@ -103,4 +106,9 @@ fun DependencyHandler.hilt() {
     implementation(Dependencies.hiltAndroid)
     implementation(Dependencies.hiltNavigationCompose)
     ksp(Dependencies.hiltCompiler)
+}
+
+fun DependencyHandler.coil() {
+    implementation(Dependencies.coilCore)
+    implementation(Dependencies.coilCompose)
 }

@@ -14,5 +14,6 @@ object Versions {
     const val hiltNavigationCompose = "1.0.0"
     const val androidCoreKtx = "1.9.0"
     const val ksp = "1.9.0-1.0.13"
+    const val coil = "2.2.0"
 
 }
