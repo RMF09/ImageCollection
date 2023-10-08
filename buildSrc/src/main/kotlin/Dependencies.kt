@@ -54,8 +54,8 @@ object Dependencies {
 
 fun DependencyHandler.room() {
     implementation(Dependencies.roomRuntime)
-    implementation(Dependencies.roomCompiler)
-    ksp(Dependencies.roomKtx)
+    implementation(Dependencies.roomKtx)
+    ksp(Dependencies.roomCompiler)
 }
 
 fun DependencyHandler.retrofit() {
@@ -72,7 +72,9 @@ fun DependencyHandler.compose() {
     implementation(Dependencies.composeUiTooling)
     implementation(Dependencies.composeMaterial)
     implementation(Dependencies.composeActivity)
+    implementation(Dependencies.paging)
     implementation(platform(Dependencies.composeBom))
+
     debugImplementation(Dependencies.composeUiToolingPreview)
     androidTestImplementation(platform(Dependencies.composeBom))
 }
@@ -81,7 +83,6 @@ fun DependencyHandler.composeDestination() {
     implementation(Dependencies.composeDestinationCore)
     ksp(Dependencies.composeDestinationKsp)
 }
-
 fun DependencyHandler.viewModel() {
     implementation(Dependencies.viewModelCompose)
     implementation(Dependencies.viewModelKtx)

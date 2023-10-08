@@ -1,18 +1,20 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
     id("dagger.hilt.android.plugin")
     id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
     namespace = "com.rmf.imagecollection"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.rmf.imagecollection"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -20,6 +22,11 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField(
+            "String",
+            "UNSPLASH_ACCESS_KEY",
+            project.properties["unsplash_access_key"].toString()
+        )
     }
 
     buildTypes {
@@ -40,6 +47,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.composeCompiler
@@ -53,7 +61,7 @@ android {
 
 dependencies {
 
-    implementation (Dependencies.androidCoreKtx)
+    implementation(Dependencies.androidCoreKtx)
     lifeCycle()
     liveData()
     viewModel()
