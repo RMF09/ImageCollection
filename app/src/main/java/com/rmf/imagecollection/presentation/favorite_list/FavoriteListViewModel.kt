@@ -6,6 +6,7 @@ import com.rmf.imagecollection.domain.model.Photo
 import com.rmf.imagecollection.domain.repository.UnsplashRepository
 import com.rmf.imagecollection.util.exhaustive
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -42,6 +43,7 @@ class FavoriteListViewModel @Inject constructor(
     private fun getPhotos(){
         viewModelScope.launch {
             unsplashRepository.getFavoritePhotos().collect{ result ->
+                delay(500)
                 _photos.value = result
             }
         }

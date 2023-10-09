@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PhotoDao {
 
-    @Query("SELECT * FROM photoentity")
+    @Query("SELECT * FROM photoentity ORDER BY date DESC")
     fun getFavoritePhotos(): Flow<List<PhotoEntity>>
 
     @Query("SELECT * FROM photoentity WHERE id = :id")

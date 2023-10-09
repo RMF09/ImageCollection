@@ -13,5 +13,6 @@ data class PhotoEntity(
     val raw: String,
     val regular: String,
     val small: String,
-    val thumb: String
+    val thumb: String,
+    val date: Long = 0
 )

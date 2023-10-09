@@ -20,7 +20,7 @@ class UnsplashRepositoryImpl @Inject constructor(
 ) : UnsplashRepository {
     override suspend fun getPhotos(searchQuery: String): Flow<PagingData<Photo>> =
         Pager(
-            config = PagingConfig(pageSize = 30)
+            config = PagingConfig(pageSize = 10, prefetchDistance = 2)
         ) {
             PhotoPagingSource(api = api, searchQuery = searchQuery)
         }.flow
@@ -34,7 +34,7 @@ class UnsplashRepositoryImpl @Inject constructor(
     }
 
     override suspend fun addToFavorite(photo: Photo) {
-        photoDao.addToFavorite(photo.toEntity())
+        photoDao.addToFavorite(photo.toEntity(date = System.currentTimeMillis()))
     }
 
     override suspend fun removeFromFavorite(photo: Photo) {

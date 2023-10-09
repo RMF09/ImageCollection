@@ -19,10 +19,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.rmf.imagecollection.domain.model.Photo
 
 @Composable
@@ -33,7 +35,10 @@ fun PhotoItem(photo: Photo, modifier: Modifier = Modifier) {
             .clip(RoundedCornerShape(16.dp))
     ) {
         AsyncImage(
-            model = photo.urls.regular,
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(photo.urls.regular)
+                .crossfade(true)
+                .build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier

@@ -31,7 +31,7 @@ fun PhotoEntity.toPhoto() =
         )
     )
 
-fun Photo.toEntity() =
+fun Photo.toEntity(date: Long = 0) =
     PhotoEntity(
         id = id,
         description = description ?: "",
@@ -42,4 +42,5 @@ fun Photo.toEntity() =
         thumb = urls.thumb,
         name = user.name,
         username = user.username,
+        date = date
     )

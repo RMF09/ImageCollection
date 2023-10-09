@@ -1,6 +1,5 @@
 package com.rmf.imagecollection.data.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.rmf.imagecollection.data.parser.toPhoto
@@ -13,14 +12,11 @@ class PhotoPagingSource(
 ) : PagingSource<Int, Photo>() {
 
     companion object {
-        const val ITEM_PER_PAGE = 30
+        const val ITEMS_PER_PAGE = 10
     }
 
     override fun getRefreshKey(state: PagingState<Int, Photo>) =
-        state.anchorPosition?.let { anchorPosition ->
-            val anchorPage = state.closestPageToPosition(anchorPosition)
-            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
-        }
+        state.anchorPosition
 
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
@@ -28,9 +24,7 @@ class PhotoPagingSource(
 
         return try {
             val response =
-                api.searchPhotos(query = searchQuery, page = nextPage, perPage = ITEM_PER_PAGE)
-
-            Log.e("TAG", "load: ${response.code}", )
+                api.searchPhotos(query = searchQuery, page = nextPage, perPage = ITEMS_PER_PAGE)
 
             val photos = response.results
             LoadResult.Page(

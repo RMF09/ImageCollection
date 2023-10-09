@@ -1,5 +1,6 @@
 package com.rmf.imagecollection.presentation.photo_detail
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -47,6 +48,8 @@ fun PhotoDetailScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
+            .background(color = MaterialTheme.colorScheme.background)
+
     ) {
         AsyncImage(
             model = photo.urls.regular,
@@ -81,7 +84,7 @@ fun PhotoDetailScreen(
             }
         }
         Text(
-            text = photo.description ?: stringResource(id = R.string.text_no_description),
+            text = if (photo.description.isNullOrBlank()) stringResource(id = R.string.text_no_description) else photo.description,
             fontSize = 14.sp,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.78f),
             lineHeight = 18.sp,

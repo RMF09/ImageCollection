@@ -38,9 +38,6 @@ import com.rmf.imagecollection.presentation.startAppDestination
 @Composable
 fun MyBottomNavigation( navController: NavController
 ) {
-    val currentDestination: Destination = navController.appCurrentDestinationAsState().value
-        ?: NavGraphs.root.startAppDestination
-
 
     NavigationBar(
         modifier = Modifier.clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
