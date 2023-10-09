@@ -11,6 +11,7 @@ import com.rmf.imagecollection.domain.model.Photo
 import com.rmf.imagecollection.domain.repository.UnsplashRepository
 import com.rmf.imagecollection.util.exhaustive
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -25,6 +26,7 @@ class PhotoListViewModel @Inject constructor(
     val photos = _photos.asStateFlow()
 
     var state by mutableStateOf(PhotoListState())
+    val event = MutableSharedFlow<PhotoListEvent>()
 
 
     init {
@@ -38,13 +40,19 @@ class PhotoListViewModel @Inject constructor(
             }
 
             is PhotoListUiEvent.OnClickPhoto -> {
-                // TODO: Navigate to Detail Screen
+                navigateToPhotoDetail(photo = event.photo)
             }
 
             PhotoListUiEvent.OnClickSearch -> {
                 getPhotos()
             }
         }.exhaustive
+    }
+
+    private fun navigateToPhotoDetail(photo: Photo) {
+        viewModelScope.launch {
+            event.emit(PhotoListEvent.NavigateToPhotoDetailScreen(photo = photo))
+        }
     }
 
     private fun getPhotos() {

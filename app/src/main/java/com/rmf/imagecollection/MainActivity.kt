@@ -14,7 +14,7 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.defaults.RootNavGraphDefaultAnimations
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
-import com.rmf.imagecollection.presentation.photo_list.NavGraphs
+import com.rmf.imagecollection.presentation.NavGraphs
 import com.rmf.imagecollection.ui.theme.ImageCollectionTheme
 import dagger.hilt.android.AndroidEntryPoint
 

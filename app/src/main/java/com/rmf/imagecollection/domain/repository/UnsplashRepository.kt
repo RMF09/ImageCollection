@@ -9,6 +9,7 @@ interface UnsplashRepository {
     suspend fun getPhotos(searchQuery: String): Flow<PagingData<Photo>>
 
     fun getFavoritePhotos(): Flow<List<Photo>>
+    fun getFavoritePhoto(id: String): Flow<Photo?>
 
     suspend fun addToFavorite(photo: Photo)
 

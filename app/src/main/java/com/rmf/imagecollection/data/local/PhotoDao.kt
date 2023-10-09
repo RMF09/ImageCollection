@@ -13,6 +13,9 @@ interface PhotoDao {
     @Query("SELECT * FROM photoentity")
     fun getFavoritePhotos(): Flow<List<PhotoEntity>>
 
+    @Query("SELECT * FROM photoentity WHERE id = :id")
+    fun getFavoritePhoto(id: String): Flow<PhotoEntity?>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addToFavorite(photoEntity: PhotoEntity)
 

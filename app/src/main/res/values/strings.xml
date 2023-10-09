@@ -3,4 +3,5 @@
     <string name="text_photos_empty">There is no photos</string>
     <string name="text_cant_load_data_request">Cant load data, please try again later</string>
     <string name="text_retry">Retry</string>
+    <string name="text_no_description">No description</string>
 </resources>

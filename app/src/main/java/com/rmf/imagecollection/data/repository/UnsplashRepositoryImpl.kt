@@ -29,6 +29,10 @@ class UnsplashRepositoryImpl @Inject constructor(
         return photoDao.getFavoritePhotos().map { res -> res.map { it.toPhoto() } }
     }
 
+    override fun getFavoritePhoto(id: String): Flow<Photo?> {
+        return photoDao.getFavoritePhoto(id).map { res -> res?.toPhoto() }
+    }
+
     override suspend fun addToFavorite(photo: Photo) {
         photoDao.addToFavorite(photo.toEntity())
     }
