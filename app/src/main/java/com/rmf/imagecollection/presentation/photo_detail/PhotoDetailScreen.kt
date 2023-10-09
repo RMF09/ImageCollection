@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -64,7 +65,7 @@ fun PhotoDetailScreen(
             Icon(
                 imageVector = Icons.Default.AccountCircle,
                 contentDescription = null,
-                tint = Color.Black.copy(alpha = 0.8f)
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
             )
             Text(
                 text = photo.user.username,
@@ -82,7 +83,7 @@ fun PhotoDetailScreen(
         Text(
             text = photo.description ?: stringResource(id = R.string.text_no_description),
             fontSize = 14.sp,
-            color = Color.Black.copy(alpha = 0.78f),
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.78f),
             lineHeight = 18.sp,
             modifier = Modifier
                 .padding(horizontal = 12.dp)
@@ -92,7 +93,7 @@ fun PhotoDetailScreen(
             text = "Attribution : ${photo.user.attributionUrl}",
             fontSize = 12.sp,
             fontStyle = FontStyle.Italic,
-            color = Color.Black.copy(alpha = 0.70f),
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.70f),
             lineHeight = 16.sp,
             modifier = Modifier
                 .padding(horizontal = 12.dp)
