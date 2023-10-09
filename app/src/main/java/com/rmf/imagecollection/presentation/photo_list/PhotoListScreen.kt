@@ -189,7 +189,6 @@ fun PhotoListScreen(
                     }
 
                     loadState.append is LoadState.Loading -> {
-                        Log.e("TAG", "PhotoListScreen: append Loading")
                         item {
                             Box(
                                 modifier = Modifier
